@@ -13,17 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
-    <ion-row>
-    <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
-      <ion-img [src]="photo.webviewPath" (click)="showActionSheet(photo, position)"></ion-img>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-item *ngFor="let item of items" [routerLink]="['detail', item.title]">
+    <ion-thumbnail slot="start">
+      <img src="{{item.photo}}">
+    </ion-thumbnail>
+    <ion-label>{{ item.title }}</ion-label>
+  </ion-item>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="photoService.addNewToGallery()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
