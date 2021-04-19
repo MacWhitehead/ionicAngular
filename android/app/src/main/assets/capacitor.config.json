@@ -1,8 +1,15 @@
 {
-  "appId": "io.ionic.demo.pg.cap.ng",
-  "appName": "Photo Gallery Cap Ng",
+  "appId": "io.ionicDemo.app",
+  "appName": "IonicExample",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
-  "cordova": {}
+  "cordova": {}, 
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon_config_sample",
+      "iconColor": "#488AFF",
+      "sound": "beep.wav"
+    }
+  }
 }

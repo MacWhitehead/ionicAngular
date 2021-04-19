@@ -50,5 +50,9 @@
     >Go to Tab 1</ion-button
   >
 
-  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+  <ion-button color="secondary" (click)="getLocation()">Geolocation</ion-button>
+
+  <p>Location: {{location?.coords.latitude}} {{location?.coords.longitude}}</p>
+
+  <ion-button color="success" (click)="notification()">Notification</ion-button>
 </ion-content>

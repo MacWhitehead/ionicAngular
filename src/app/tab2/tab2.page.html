@@ -7,13 +7,16 @@
 </ion-header>
 
 <ion-content>
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Photo Gallery</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-item *ngFor="let item of items" [routerLink]="['detail', item.title]">
+  <ion-searchbar debounce="500" [(ngModel)]='searchText' (ionChange)="filterList()"></ion-searchbar>
+
+  <ion-item *ngFor="let item of filteredItems" [routerLink]="['detail', item.title]">
     <ion-thumbnail slot="start">
       <img src="{{item.photo}}">
     </ion-thumbnail>

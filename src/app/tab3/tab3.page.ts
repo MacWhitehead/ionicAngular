@@ -2,12 +2,41 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+import { Plugins } from '@capacitor/core';
+const { Geolocation } = Plugins;
+const { LocalNotifications } = Plugins;
+
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit{
+
+  location: any;
+
+  async getLocation() {
+    this.location = await Geolocation.getCurrentPosition();
+    console.log(location)
+  }
+
+  async notification() {
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: 'Hello!', 
+          body: 'This is a notification',
+          id: 1,
+          // schedule: { at: new Date(Date.now() + 1000) }, 
+          // sound: null, 
+          // attachments: null, 
+          // actionTypeId: '', 
+          // extra: null
+        }
+      ]
+    })
+  }
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter')
@@ -20,7 +49,8 @@ export class Tab3Page implements OnInit{
   }
 
   ngOnInit() {
-    document.querySelector('#myButton').addEventListener('click', this.presentAlert)
+    document.querySelector('#myButton').addEventListener('click', this.presentAlert);
+    LocalNotifications.requestPermission()
   }
 
   ngOnDestroy() {

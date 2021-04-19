@@ -8,7 +8,7 @@ const routes: Routes = [
     component: Tab2Page,
   },
   {
-    path: 'detail/:title',
+    path: 'tab2/detail/:title',
     component: ItemDetailPage
   }
 ];
